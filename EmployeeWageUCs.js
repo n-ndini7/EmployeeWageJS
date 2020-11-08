@@ -59,3 +59,9 @@ function fulltimeWage(dailyWage){
 let fullDayWageArr = mapDayWithWageArr.filter(fulltimeWage);
 console.log("UC7C - Daily Wage filter when  fulltime  wage  earned :");
 console.log(fullDayWageArr); 
+
+//7D - 
+function findFullTimeWage(dailyWage){
+    return dailyWage.includes("160");
+}
+console.log("UC7D - first time Fulltime wage was earned on day : "+mapDayWithWageArr.find(findFullTimeWage));
