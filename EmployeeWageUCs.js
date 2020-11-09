@@ -42,9 +42,11 @@ while((totalEmpHrs<=MAX_HRS_IN_MONTH)&&(totalWorkingDays<NUM_OF_WORKING_DAYS)){
         });
 
  }
- console.log("UC10 - Showing daily hours worked and wage earned : "+empDailyHoursAndWage);
-
  //UC11A - calculate total wages and total hours worked
  let totalWages = empDailyHoursAndWage.filter(dailyHsAndWage => dailyHsAndWage.dailyWage > 0).reduce((totalWage , dailyHsAndWage ) => totalWage +=dailyHsAndWage.dailyWage,0);
  let totalHours = empDailyHoursAndWage.filter(dailyHsAndWage => dailyHsAndWage.dailyWage > 0).reduce((totalHours , dailyHsAndWage ) => totalHours +=dailyHsAndWage.dailyHours,0);
  console.log("\nUC 11A - Total Hours : "+totalHours+" hrs Total Wages :"+totalWages+" $ ");
+
+ //UC11B - show the full working days using for each
+ console.log("UC 11B - logging full work days");
+ empDailyHoursAndWage.filter(dailyHsAndWage => dailyHsAndWage.dailyHours == 8).forEach(dailyHsAndWage => console.log(dailyHsAndWage.toString())); 
