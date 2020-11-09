@@ -48,5 +48,5 @@ while((totalEmpHrs<=MAX_HRS_IN_MONTH)&&(totalWorkingDays<NUM_OF_WORKING_DAYS)){
  console.log("\nUC 11A - Total Hours : "+totalHours+" hrs Total Wages :"+totalWages+" $ ");
 
  //UC11B - show the full working days using for each
- console.log("UC 11B - logging full work days");
- empDailyHoursAndWage.filter(dailyHsAndWage => dailyHsAndWage.dailyHours == 8).forEach(dailyHsAndWage => console.log(dailyHsAndWage.toString())); 
+ process.stdout.write("UC 11B - logging full work days");
+ empDailyHoursAndWage.filter(dailyHsAndWage => dailyHsAndWage.dailyHours == 8).forEach(dailyHsAndWage => process.stdout.write(dailyHsAndWage.toString())); 
