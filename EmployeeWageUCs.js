@@ -51,7 +51,11 @@ while((totalEmpHrs<=MAX_HRS_IN_MONTH)&&(totalWorkingDays<NUM_OF_WORKING_DAYS)){
  process.stdout.write("UC 11B - logging full work days");
  empDailyHoursAndWage.filter(dailyHsAndWage => dailyHsAndWage.dailyHours == 8).forEach(dailyHsAndWage => process.stdout.write(dailyHsAndWage.toString()));
  
- //UC11 - show the part working days using map by reducing to string array
+ //UC11C - show the part working days using map by reducing to string array
  let partTimeWorkingDays = empDailyHoursAndWage.filter(dailyHsAndWage => dailyHsAndWage.dailyHours == 4).map(dailyHsAndWage => dailyHsAndWage.toString());
  console.log("\n \nUC 11C - part working days array : "+partTimeWorkingDays);
+ 
+ //UC11D - show the non working days array 
+ let nonWorkingDays = empDailyHoursAndWage.filter(dailyHsAndWage => dailyHsAndWage.dailyHours == 0).map(dailyHsAndWage => dailyHsAndWage.dayNum);
+ console.log("\n \nUC 11D - non working days array : "+nonWorkingDays);
  
