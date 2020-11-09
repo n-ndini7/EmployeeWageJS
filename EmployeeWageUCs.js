@@ -96,3 +96,16 @@ const findTotal = (totalVal,dailyVal) => {
 let totalHours = Array.from(empDailyHrsMap.values()).reduce(findTotal,0);
 let totalSalary = empDailyWageArray.filter(dailyWage => dailyWage > 0 ).reduce(findTotal,0);
 console.log("UC9A: Employee wage with Arrow."+" \nTotal Hours : "+totalHours+" \nTotal wage : "+totalSalary);
+
+//UC9B - show the full working days , part working days and no working days
+let nonWokingDays = new Array();
+let partWorkingdays = new Array();
+let fullWorkingDays = new Array()
+empDailyHrsMap.forEach(( value , key ) => {
+    if(value==8) fullWorkingDays.push(key);
+    else if(value==4) partWorkingdays.push(key);
+    else nonWokingDays.push(key);
+});
+console.log("UC9B ==> \nFull working days :" +fullWorkingDays);
+console.log("Part working days :" +partWorkingdays);
+console.log("Non working days :" +nonWokingDays);
