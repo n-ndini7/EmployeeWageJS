@@ -10,13 +10,10 @@ const MAX_HRS_IN_MONTH = 160;
 function getWorkingHours(empCheck) {
     switch(empCheck){
         case IS_PART_TIME:
-            console.log("Employee Present, is Part Time");
             return PART_TIME_HOURS;
         case IS_FULL_TIME:
-            console.log("Employee Present, is Full Time");
             return FULL_TIME_HOURS;
         default:
-            console.log("Employee is absent");
             return 0;
     }
 }
@@ -29,12 +26,16 @@ let totalEmpHrs = 0;
 let totalWorkingDays = 0;
 let dailyWages = 0;
 let empDailyWageArray = new Array();
+let empDailyWageMap = new Map();
+let empDailyHrsMap = new Map();
 while((totalEmpHrs<=MAX_HRS_IN_MONTH)&&(totalWorkingDays<NUM_OF_WORKING_DAYS)){
     totalWorkingDays++;
     let empCheck = Math.floor(Math.random()*10)%3;
     let empHrs = getWorkingHours(empCheck);
     totalEmpHrs += getWorkingHours(empCheck);
     empDailyWageArray.push(calcDailyWage(empHrs));
+    empDailyHrsMap.set(totalWorkingDays,empHrs);
+    empDailyWageMap.set(totalWorkingDays,calcDailyWage(empHrs));
 }
 
 let empWage = calcDailyWage(totalEmpHrs);
@@ -87,3 +88,11 @@ console.log("UC 7D - First time Full Time Wage earned on day: "+mapDayWithWageAr
 function isAllFullTimeWage(dailyWage){
     return dailyWage.includes("160");
 }
+
+//UC9A - calculate total wage and total hours worked
+const findTotal = (totalVal,dailyVal) => {
+    return totalVal+=dailyVal;
+}
+let totalHours = Array.from(empDailyHrsMap.values()).reduce(findTotal,0);
+let totalSalary = empDailyWageArray.filter(dailyWage => dailyWage > 0 ).reduce(findTotal,0);
+console.log("UC9A: Employee wage with Arrow."+" \nTotal Hours : "+totalHours+" \nTotal wage : "+totalSalary);
